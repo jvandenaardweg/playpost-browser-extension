@@ -1,69 +1,85 @@
 import * as React from 'react';
 import './Popup.scss';
+import { LoginForm } from '../components/LoginForm';
+import { SaveArticle } from '../components/SaveArticle';
 
 interface AppProps {}
 
 interface AppState {
   currentUrl: string
   htmlBase64String: string;
+  token: string;
 }
 
 export default class Popup extends React.Component<AppProps, AppState> {
-    constructor(props: AppProps, state: AppState) {
-        super(props, state);
+  constructor(props: AppProps, state: AppState) {
+    super(props, state);
 
-        this.state = {
-          currentUrl: '',
-          htmlBase64String: ''
-        }
+    this.state = {
+      currentUrl: '',
+      htmlBase64String: '',
+      token: ''
     }
-
-    getDataFromDocument() {
-      return {
-        html: document.body.outerHTML,
-        url: window.location.href
-      }
   }
 
-    componentDidMount() {
+  getDataFromDocument() {
+    return {
+      html: document.body.outerHTML,
+      url: window.location.href
+    }
+  }
 
-      chrome.tabs.executeScript({
-        code: '(' + this.getDataFromDocument + ')();' //argument here is a string but function.toString() returns function's code
-    }, (results) => {
-        if (!results[0]) return alert('Somethinf went wrong. Please try again.');
-        if (!results[0].html) return alert('We could not analyse the page.')
-        if (!results[0].url) return alert('We could not get a URL.')
+  componentDidMount() {
+    // Get token from storage
+    chrome.storage.sync.get(['token'], (items) => {
+      if (!items || !items.token) {
+        return
+      }
 
-        const { html, url } = results[0];
-
-        const htmlBase64String = btoa(html)
-
-        this.setState({ currentUrl: url, htmlBase64String });
+      // Set component state as logged in
+      this.setState({ token: items.token })
     });
 
-      // chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
-      //   const currentUrl = tabs[0].url;
-      //   this.setState({ currentUrl })
-      //   chrome.tabs.sendMessage(tabs[0].id, {action: "GET_DOCUMENT_HTML"}, function(response) {
-      //     console.log(response);
-      //   });
-      // });
+    chrome.tabs.executeScript({
+      code: '(' + this.getDataFromDocument + ')();' //argument here is a string but function.toString() returns function's code
+    }, (results) => {
+      if (!results[0]) return alert('Somethinf went wrong. Please try again.');
+      if (!results[0].html) return alert('We could not analyse the page.')
+      if (!results[0].url) return alert('We could not get a URL.')
 
-      // chrome.storage.sync.get('color', function(data) {
-      //   console.log('storage data', data);
-      // });
+      const { html, url } = results[0];
 
-    }
+      // const htmlBase64String = btoa(html)
 
-    render() {
-      const { currentUrl, htmlBase64String } = this.state;
+      // chrome.storage.sync.get('color', (data) => this.setState({ color }))
 
-        return (
-            <div className="popupContainer">
-                <p>Hello, Playpost!</p>
-                <p>{currentUrl}</p>
-                {/* <p>{htmlBase64String}</p> */}
-            </div>
-        )
-    }
+      this.setState({ currentUrl: url });
+    });
+  }
+
+  handleOnLoginSuccess = (token: string) => {
+    // Save token in local storage
+    chrome.storage.sync.set({ token }, () => {
+      this.setState({ token });
+    });
+  }
+
+  handleOnClickLogout = () => {
+    chrome.storage.sync.remove('token', () => {
+      this.setState({ token: '' });
+    });
+  }
+
+
+  render() {
+    const { currentUrl, htmlBase64String, token } = this.state;
+
+    return (
+        <div className="popupContainer">
+          {!token && <LoginForm onSuccess={this.handleOnLoginSuccess} />}
+          {token && <SaveArticle url={currentUrl} token={token} />}
+          {token && <button type="button" onClick={this.handleOnClickLogout}>Logout</button>}
+        </div>
+    )
+  }
 }

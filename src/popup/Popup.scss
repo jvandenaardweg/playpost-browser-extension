@@ -1,19 +1,30 @@
 $primary-color: darkblue;
 $background-color: #bada55;
 
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 // Chrome applies an 8px margin by default (gross).
 body {
-  margin: 0px;
+  margin: 24px;
+  font-size: 14px;
 }
 
 .popupContainer {
-  align-items: center;
-  background-color: $background-color;
-  border: 2px solid $primary-color;
-  color: $primary-color;
-  display: flex;
-  font-size: 20px;
-  height: 150px;
-  justify-content: center;
-  width: 450px;
+  // align-items: center;
+  // background-color: $background-color;
+  // border: 2px solid $primary-color;
+  // color: $primary-color;
+  // display: flex;
+  // font-size: 20px;
+  // height: 150px;
+  // justify-content: center;
+  width: 260px;
 }
