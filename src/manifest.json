@@ -11,8 +11,7 @@
   },
 
   "background": {
-    "scripts": ["background.js"],
-    "persistent": false
+    "scripts": ["background.js"]
   },
 
   "content_scripts": [
@@ -34,6 +33,7 @@
     "tabs",
     "cookies",
     "notifications",
+    "contextMenus",
     "http://*/*",
     "https://*/*",
     "<all_urls>"

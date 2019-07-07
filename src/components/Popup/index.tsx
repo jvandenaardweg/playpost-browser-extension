@@ -1,7 +1,7 @@
 import * as React from 'react';
-import './Popup.scss';
-import { LoginForm } from '../components/LoginForm';
-import { SaveArticle } from '../components/SaveArticle';
+import './style.scss';
+import { LoginForm } from '../LoginForm';
+import { SaveArticle } from '../SaveArticle';
 
 interface AppProps {}
 
@@ -11,7 +11,7 @@ interface AppState {
   token: string;
 }
 
-export default class Popup extends React.Component<AppProps, AppState> {
+export class Popup extends React.Component<AppProps, AppState> {
   constructor(props: AppProps, state: AppState) {
     super(props, state);
 
@@ -49,16 +49,13 @@ export default class Popup extends React.Component<AppProps, AppState> {
 
       const { html, url } = results[0];
 
-      // const htmlBase64String = btoa(html)
-
-      // chrome.storage.sync.get('color', (data) => this.setState({ color }))
-
       this.setState({ currentUrl: url });
     });
   }
 
   handleOnLoginSuccess = (token: string) => {
     // Save token in local storage
+    // Use storage.sync so it's saved on all the user's Chrome browsers on every device
     chrome.storage.sync.set({ token }, () => {
       this.setState({ token });
     });
@@ -70,16 +67,15 @@ export default class Popup extends React.Component<AppProps, AppState> {
     });
   }
 
-
   render() {
     const { currentUrl, htmlBase64String, token } = this.state;
 
     return (
-        <div className="popupContainer">
-          {!token && <LoginForm onSuccess={this.handleOnLoginSuccess} />}
-          {token && <SaveArticle url={currentUrl} token={token} />}
-          {token && <button type="button" onClick={this.handleOnClickLogout}>Logout</button>}
-        </div>
+      <div className="Popup">
+        {!token && <LoginForm onSuccess={this.handleOnLoginSuccess} />}
+        {token && currentUrl && <SaveArticle url={currentUrl} token={token} />}
+        {token && <button type="button" onClick={this.handleOnClickLogout}>Logout</button>}
+      </div>
     )
   }
 }

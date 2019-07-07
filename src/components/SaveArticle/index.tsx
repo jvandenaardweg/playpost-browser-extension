@@ -23,8 +23,17 @@ export class SaveArticle extends React.PureComponent<AppProps, AppState> {
     }
   }
 
+  componentDidMount() {
+    // Save the article on mount
+    this.saveArticle();
+  }
+
   handleOnClick = async (event: any) => {
     event.preventDefault();
+    this.saveArticle();
+  }
+
+  saveArticle = () => {
     const { url, token } = this.props;
 
     return this.setState({ isLoading: true, isSuccess: false, errorMessage: '' }, async () => {
@@ -63,7 +72,7 @@ export class SaveArticle extends React.PureComponent<AppProps, AppState> {
     return (
       <div>
         {errorMessage && (<p style={{ color: 'red' }}>{errorMessage}</p>)}
-        <button type="button" onClick={this.handleOnClick}>{(isLoading) ? 'Saving...' : 'Save article'}</button>
+        <button type="button" onClick={this.handleOnClick}>{(isLoading) ? 'Saving...' : 'Retry'}</button>
       </div>
     )
   }
