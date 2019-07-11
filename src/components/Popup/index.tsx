@@ -2,12 +2,13 @@ import * as React from 'react';
 import './style.scss';
 import { LoginForm } from '../LoginForm';
 import { SaveArticle } from '../SaveArticle';
+import { Button } from '../Button';
 
 interface AppProps {}
 
 interface AppState {
-  currentUrl: string
-  htmlBase64String: string;
+  articleUrl: string
+  documentHtml: string;
   token: string;
 }
 
@@ -16,16 +17,16 @@ export class Popup extends React.Component<AppProps, AppState> {
     super(props, state);
 
     this.state = {
-      currentUrl: '',
-      htmlBase64String: '',
+      articleUrl: '',
+      documentHtml: '',
       token: ''
     }
   }
 
   getDataFromDocument() {
     return {
-      html: document.body.outerHTML,
-      url: window.location.href
+      documentHtml: document.documentElement.outerHTML,
+      articleUrl: window.location.href
     }
   }
 
@@ -44,12 +45,14 @@ export class Popup extends React.Component<AppProps, AppState> {
       code: '(' + this.getDataFromDocument + ')();' //argument here is a string but function.toString() returns function's code
     }, (results) => {
       if (!results[0]) return alert('Somethinf went wrong. Please try again.');
-      if (!results[0].html) return alert('We could not analyse the page.')
-      if (!results[0].url) return alert('We could not get a URL.')
+      if (!results[0].documentHtml) return alert('We could not analyse the page.')
+      if (!results[0].articleUrl) return alert('We could not get a URL.')
 
-      const { html, url } = results[0];
+      const { documentHtml, articleUrl } = results[0];
 
-      this.setState({ currentUrl: url });
+      console.log(results[0])
+
+      this.setState({ articleUrl, documentHtml });
     });
   }
 
@@ -68,13 +71,14 @@ export class Popup extends React.Component<AppProps, AppState> {
   }
 
   render() {
-    const { currentUrl, htmlBase64String, token } = this.state;
+    const { articleUrl, documentHtml, token } = this.state;
 
     return (
       <div className="Popup">
         {!token && <LoginForm onSuccess={this.handleOnLoginSuccess} />}
-        {token && currentUrl && <SaveArticle url={currentUrl} token={token} />}
-        {token && <button type="button" onClick={this.handleOnClickLogout}>Logout</button>}
+        {token && articleUrl && <SaveArticle articleUrl={articleUrl} documentHtml={documentHtml} token={token} />}
+        {token && <h1>Logged in</h1>}
+        {token && <Button title="Logout" onClick={this.handleOnClickLogout} />}
       </div>
     )
   }

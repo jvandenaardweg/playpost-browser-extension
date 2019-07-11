@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './style.scss';
+import { Button } from '../Button';
 
 interface AppProps {
   onSuccess(token: string): void;
@@ -27,8 +28,8 @@ export class LoginForm extends React.PureComponent<AppProps, AppState> {
   }
 
   handleOnChange = (field: string, value: string) => {
-    if (field === 'email') this.setState({ email: value });
-    if (field === 'password') this.setState({ password: value });
+    if (field === 'email') return this.setState({ email: value });
+    if (field === 'password') return this.setState({ password: value });
   }
 
   handleOnSubmit = async (event: any) => {
@@ -77,13 +78,13 @@ export class LoginForm extends React.PureComponent<AppProps, AppState> {
         <p>Login to your Playpost account to share articles from your browser to your playlist.</p>
         <fieldset disabled={isLoading} className="LoginForm-fieldset">
           <label className="LoginForm-label" htmlFor="email">E-mail address</label>
-          <input className="LoginForm-input" type="text" id="email" value={email} placeholder="Your e-mail address" onChange={event => this.handleOnChange('email', event.target.value)} />
+          <input className="LoginForm-input" type="text" id="email" placeholder="Your e-mail address" onChange={event => this.handleOnChange('email', event.target.value)} />
 
           <label className="LoginForm-label" htmlFor="password">Password</label>
-          <input className="LoginForm-input" type="password" value={password} placeholder="Your password" onChange={event => this.handleOnChange('password', event.target.value)} />
+          <input className="LoginForm-input" type="password" id="password" placeholder="Your password" onChange={event => this.handleOnChange('password', event.target.value)} />
 
           {errorMessage && (<p style={{ color: 'red' }}>{errorMessage}</p>)}
-          <button className="LoginForm-button" type="submit" disabled={isLoading}>{(isLoading) ? 'Logging in...' : 'Login'}</button>
+          <Button title={(isLoading) ? 'Logging in...' : 'Login'} type="submit" className="LoginForm-button" onClick={this.handleOnSubmit} disabled={isLoading} />
         </fieldset>
         <p>{token}</p>
       </form>
