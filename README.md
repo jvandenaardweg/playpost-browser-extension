@@ -1,6 +1,11 @@
-# Playpost Chrome Extension
+# Playpost Browser Extension
+Desktop browser extension for Chrome and Firefox to save articles to your Playpost playlist.
 
-Chrome Extension for Playpost: https://playpost.app
+## Installation
+Install through the (Google Chrome Store)[https://chrome.google.com/webstore] or the (Firefox Add-ons Store)[https://addons.mozilla.org/nl/firefox/]
+
+## Installation without stores
+1. 
 
 ## Building
 
