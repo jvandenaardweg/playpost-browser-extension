@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Save to Playpost",
   "description": "Easily save articles to your Playpost playlist.",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "browser_action": {
     "default_title": "Save to Playpost",
     "default_icon": "images/icon-16.png",

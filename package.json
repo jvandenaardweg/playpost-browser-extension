@@ -54,7 +54,7 @@
     "addFiles": [
       "package.json",
       "CHANGELOG.md",
-      "extensions"
+      "extensions/*"
     ],
     "commit": true,
     "commitMessage": "Release ${version}",
