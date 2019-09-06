@@ -25,7 +25,7 @@ export class Options extends React.PureComponent<AppProps, AppState> {
   }
 
   componentDidMount() {
-    chrome.storage.sync.get(['token', 'autoSave', 'autoClose'], (items) => {
+    chrome.storage.local.get(['token', 'autoSave', 'autoClose'], (items) => {
       if (!items || !items.token) {
         return
       }
@@ -42,7 +42,7 @@ export class Options extends React.PureComponent<AppProps, AppState> {
     const autoSave = !this.state.autoSave; // toggle
     const autoSaveString = autoSave.toString();
 
-    chrome.storage.sync.set({ autoSave: autoSaveString }, () => {
+    chrome.storage.local.set({ autoSave: autoSaveString }, () => {
       this.setState({ autoSave });
     });
   }
@@ -51,13 +51,13 @@ export class Options extends React.PureComponent<AppProps, AppState> {
     const autoClose = !this.state.autoClose; // toggle
     const autoCloseString = autoClose.toString();
 
-    chrome.storage.sync.set({ autoClose: autoCloseString }, () => {
+    chrome.storage.local.set({ autoClose: autoCloseString }, () => {
       this.setState({ autoClose });
     });
   }
 
   handleOnClickLogout = () => {
-    chrome.storage.sync.remove('token', () => {
+    chrome.storage.local.remove('token', () => {
       this.setState({ token: '' });
     });
   }

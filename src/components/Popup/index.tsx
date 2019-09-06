@@ -71,7 +71,7 @@ export class Popup extends React.Component<AppProps, AppState> {
 
   componentDidMount() {
     // Get token from storage
-    chrome.storage.sync.get(['token', 'autoSave', 'autoClose'], (items) => {
+    chrome.storage.local.get(['token', 'autoSave', 'autoClose'], (items) => {
       if (!items || !items.token) {
         return
       }
@@ -98,8 +98,7 @@ export class Popup extends React.Component<AppProps, AppState> {
 
   handleOnLoginSuccess = (token: string) => {
     // Save token in local storage
-    // Use storage.sync so it's saved on all the user's Chrome browsers on every device
-    chrome.storage.sync.set({ token }, () => {
+    chrome.storage.local.set({ token }, () => {
       this.setState({ token });
     });
   }
