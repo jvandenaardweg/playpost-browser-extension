@@ -9,8 +9,8 @@ module.exports = merge(common, {
     new WebpackShellPlugin({
       onBuildExit: [
         'find ./extensions -name "*.zip" -delete',
-        'zip -r -j ./extensions/chrome.zip ./dist/*',
-        'zip -r -j ./extensions/firefox.zip ./dist/*',
+        'cd ./dist && npx web-ext build -a "../extensions"',
+        // 'zip -r -j ./extensions/firefox.zip ./dist/*',
       ],
       safe: true
     })
