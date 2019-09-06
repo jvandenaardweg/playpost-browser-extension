@@ -49,13 +49,9 @@
       "after:release": "echo Successfully released ${name} v${version} to ${repo.repository}."
     },
     "git": {
-      "requireCleanWorkingDir": false
+      "requireCleanWorkingDir": false,
+      "addUntrackedFiles": true
     },
-    "addFiles": [
-      "package.json",
-      "CHANGELOG.md",
-      "extensions/*"
-    ],
     "commit": true,
     "commitMessage": "Release ${version}",
     "plugins": {
