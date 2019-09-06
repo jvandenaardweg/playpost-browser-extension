@@ -45,7 +45,15 @@
     },
     "hooks": {
       "after:bump": "npx auto-changelog -p"
-    }
+    },
+    "addFiles": [
+      "package.json",
+      "CHANGELOG.md",
+      "extensions/chome.zip",
+      "extensions/firefox.zip"
+    ],
+    "commit": true,
+    "commitMessage": "Release ${version}"
   },
   "auto-changelog": {
     "output": "CHANGELOG.md",
