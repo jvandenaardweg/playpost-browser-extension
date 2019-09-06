@@ -54,8 +54,7 @@
     "addFiles": [
       "package.json",
       "CHANGELOG.md",
-      "extensions/chome.zip",
-      "extensions/firefox.zip"
+      "extensions"
     ],
     "commit": true,
     "commitMessage": "Release ${version}",
