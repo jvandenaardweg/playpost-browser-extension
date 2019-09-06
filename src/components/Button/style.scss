@@ -1,8 +1,10 @@
+@import "../../styles/colors";
+
 .Button {
   height: 40px;
   border: 0;
-  background: #eee;
-  color: #000000;
+  background: $color-gray-lightest;
+  color: $color-black;
   padding: 0 24px;
   line-height: 40px;
   font-size: 16px;
@@ -12,6 +14,11 @@
   align-items: center;
   justify-content: center;
   display: flex;
+  transition: 250ms all;
+
+  &:hover {
+    background: $color-gray-light;
+  }
 
   svg {
     display: inline-block;
@@ -20,12 +27,16 @@
 }
 
 .Button--primary {
-  background: #037DE2;
-  color: #ffffff;
+  background: $color-tint;
+  color: $color-white;
   font-size: 18px;
   font-weight: 500;
   height: 45px;
   line-height: 45px;
+
+  &:hover {
+    background: $color-tint-dark;
+  }
 }
 
 .Button--is-rounded {

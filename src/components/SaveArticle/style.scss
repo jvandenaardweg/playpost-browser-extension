@@ -1,8 +1,11 @@
+@import "../../styles/colors";
+
 .SaveArticle {
   position: relative;
-  border: 1px rgb(228, 228, 228) solid;
+  border: 1px $color-gray-lightest solid;
   padding: 18px;
   border-radius: 8px;
+  background-color: $color-white;
 }
 
 .SaveArticle__preview {
@@ -50,15 +53,15 @@
 
 .SaveArticle__warning {
   padding: 14px;
-  background-color: orange;
-  color: black;
+  background-color: $color-orange;
+  color: $color-black;
   border-radius: 4px;
 }
 
 .SaveArticle__error {
   padding: 14px;
-  background-color: red;
-  color: white;
+  background-color: $color-red;
+  color: $color-white;
   border-radius: 4px;
 }
 
@@ -76,7 +79,7 @@
   text-align: center;
 
   strong {
-    color: green;
+    color: $color-green;
     font-size: 18px;
     line-height: 1.5;
   }

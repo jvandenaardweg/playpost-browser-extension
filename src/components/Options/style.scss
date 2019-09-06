@@ -1,3 +1,4 @@
+@import "../../styles/colors";
 @import "../../styles/index.scss";
 
 .Options {
@@ -12,7 +13,7 @@
 }
 
 .Options__section {
-  border-top: 1px #eee solid;
+  border-top: 1px $color-gray-lightest solid;
   padding-top: 24px;
   margin-bottom: 24px;
   display: flex;
@@ -72,7 +73,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-top: 1px #eee solid;
+  border-top: 1px $color-gray-lightest solid;
   padding-top: 24px;
 
   svg {

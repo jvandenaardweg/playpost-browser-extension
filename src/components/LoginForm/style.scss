@@ -1,3 +1,5 @@
+@import "../../styles/colors";
+
 .LoginForm {
   display: flex;
   flex-direction: column;
@@ -33,7 +35,7 @@
   font-size: 14px;
   height: 45px;
   border-radius: 4px;
-  border: 1px #ccc solid;
+  border: 1px $color-gray-light solid;
   width: 100%;
 }
 
@@ -48,7 +50,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  border-top: 1px #eee solid;
+  border-top: 1px $color-gray-lightest solid;
   padding-top: 24px;
 
   svg {

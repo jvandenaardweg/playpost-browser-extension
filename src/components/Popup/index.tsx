@@ -108,7 +108,7 @@ export class Popup extends React.Component<AppProps, AppState> {
   }
 
   handleOnClickOptions = () => {
-    chrome.tabs.create({ 'url': `chrome-extension://${chrome.runtime.id}/options.html` });
+    chrome.tabs.create({ 'url': `chrome://extensions/?options=${chrome.runtime.id}` });
   }
 
   handleOnClickClose = () => {

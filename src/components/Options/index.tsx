@@ -102,7 +102,7 @@ export class Options extends React.PureComponent<AppProps, AppState> {
 
         <section className="Options__section">
           <div className="Options__section-column-left">
-            <h2>Extension options</h2>
+            <h2>Options</h2>
           </div>
           <div className="Options__section-column-right">
             <ul>

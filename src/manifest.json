@@ -9,6 +9,7 @@
     "default_icon": "images/icon-16.png",
     "default_popup": "popup.html"
   },
+  "incognito": "spanning",
 
   "background": {
     "scripts": ["background.js"]
