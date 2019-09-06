@@ -8,7 +8,7 @@
     "dev": "webpack --config webpack.dev.js",
     "watch": "webpack -w --config webpack.dev.js",
     "lint": "tslint 'src/**/*.{ts, tsx}'",
-    "release": "npm test && release-it"
+    "release": "npm test && npm run build && release-it"
   },
   "author": "Jordy van den Aardweg",
   "license": "MIT",
@@ -38,6 +38,7 @@
     "webpack-zip-plugin": "^0.1.6"
   },
   "release-it": {
-    "npm": false
+    "npm": false,
+    "requireCleanWorkingDir": false
   }
 }
