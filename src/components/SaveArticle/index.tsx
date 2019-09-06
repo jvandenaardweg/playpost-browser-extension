@@ -54,7 +54,7 @@ export class SaveArticle extends React.PureComponent<AppProps, AppState> {
 
     // If the saving of the article is a success, close the extension if the user wants it
     if (isSuccess && autoClose) {
-      setTimeout(() => window.close(), 1000); // Close after 1 seconds, so the user can see the success message
+      setTimeout(() => window.close(), 2000); // Close after 2 seconds, so the user can see the success message
     }
   }
 
@@ -149,7 +149,6 @@ export class SaveArticle extends React.PureComponent<AppProps, AppState> {
     const { title, url, description } = this.props;
 
     const warningMessage = this.getWarningMessage(url);
-    const isDisabled = !!warningMessage;
     const successClass = (isSuccess) ? 'is-success' : '';
 
     return (
@@ -168,7 +167,7 @@ export class SaveArticle extends React.PureComponent<AppProps, AppState> {
           <div className="SaveArticle__preview-footer">
             {warningMessage && <p className="SaveArticle__warning">{warningMessage}</p>}
             {errorMessage && <p className="SaveArticle__error">{errorMessage}</p>}
-            <Button title={(isLoading) ? 'Saving...' : 'Save article'} isPrimary isDisabled={isDisabled} onClick={this.handleOnClick} />
+            <Button title={(isLoading) ? 'Saving...' : 'Save article'} isPrimary isDisabled={isLoading} onClick={this.handleOnClick} />
           </div>
         </div>
       </div>

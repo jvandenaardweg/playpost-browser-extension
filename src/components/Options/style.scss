@@ -28,7 +28,6 @@
 }
 
 .Options__section-column-right {
-  // background: green;
   flex: 2;
 
   > p {
@@ -81,5 +80,11 @@
     margin-right: 6px;
     width: 180px;
     height: auto;
+  }
+}
+
+.Options__account {
+  p {
+    margin-top: 0;
   }
 }
