@@ -50,7 +50,8 @@
     },
     "git": {
       "requireCleanWorkingDir": false,
-      "addUntrackedFiles": true
+      "addUntrackedFiles": true,
+      "changelog": "npx auto-changelog -p"
     },
     "commit": true,
     "commitMessage": "Release ${version}",
