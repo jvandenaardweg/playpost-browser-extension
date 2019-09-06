@@ -1,6 +1,6 @@
 {
   "name": "playpost-chrome-extension",
-  "version": "1.0.32",
+  "version": "1.0.33",
   "description": "Chrome Extension for Playpost",
   "scripts": {
     "start": "npm run dev && npm run watch",
