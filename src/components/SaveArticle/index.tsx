@@ -156,7 +156,7 @@ export class SaveArticle extends React.PureComponent<AppProps, AppState> {
 
         {isSuccess && (
           <div className="SaveArticle__success">
-            <strong>Article successfully saved to your playlist!</strong>
+            <strong>Successfully saved to your playlist!</strong>
           </div>
         )}
 

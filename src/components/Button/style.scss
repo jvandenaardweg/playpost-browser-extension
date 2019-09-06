@@ -37,6 +37,14 @@
   &:hover {
     background: $color-tint-dark;
   }
+
+  &:disabled {
+    background: $color-gray;
+
+    &:hover {
+      background: $color-gray;
+    }
+  }
 }
 
 .Button--is-rounded {
