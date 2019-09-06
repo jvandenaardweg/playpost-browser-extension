@@ -8,7 +8,7 @@
     "dev": "webpack --config webpack.dev.js",
     "watch": "webpack -w --config webpack.dev.js",
     "lint": "tslint 'src/**/*.{ts, tsx}'",
-    "release": "npm test && npm run build && release-it"
+    "release": "release-it"
   },
   "author": "Jordy van den Aardweg",
   "license": "MIT",
