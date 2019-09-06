@@ -1,6 +1,6 @@
 {
   "name": "playpost-chrome-extension",
-  "version": "1.0.24",
+  "version": "1.0.25",
   "description": "Chrome Extension for Playpost",
   "scripts": {
     "start": "npm run dev && npm run watch",
@@ -42,6 +42,7 @@
   },
   "release-it": {
     "npm": false,
+    "saveBump": false,
     "hooks": {
       "before:init": [
         "npm test"
@@ -52,8 +53,7 @@
     },
     "git": {
       "requireCleanWorkingDir": false,
-      "addUntrackedFiles": true,
-      "changelog": "npx auto-changelog --stdout --commit-limit false -p"
+      "addUntrackedFiles": true
     },
     "commit": true,
     "commitMessage": "Release ${version}",
