@@ -26,3 +26,6 @@ Install through the [Google Chrome Store](https://chrome.google.com/webstore) or
 4. Run `npm run watch` to start the project in watch mode.
 5. Do your changes.
 6. Reload the extension. Your changes should be there!
+7. When done, commit and push your changes. You can verify the build by using `npm run build` and check the `./extensions` zip file.
+8. Run `npm run release` from `master`
+9. Done.
