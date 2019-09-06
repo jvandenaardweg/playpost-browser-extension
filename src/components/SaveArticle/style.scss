@@ -1,0 +1,83 @@
+.SaveArticle {
+  position: relative;
+  border: 1px rgb(228, 228, 228) solid;
+  padding: 18px;
+  border-radius: 8px;
+}
+
+.SaveArticle__preview {
+  &.is-success {
+    visibility: hidden;
+  }
+}
+
+.SaveArticle__preview-title {
+  font-size: 18px;
+  line-height: 1.2;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.SaveArticle__preview-url {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  opacity: 0.5;
+  margin-top: 8px;
+}
+
+.SaveArticle__preview-footer {
+  margin-top: 24px;
+}
+
+.SaveArticle__preview-footer .Button {
+  width: 100%;
+}
+
+.SaveArticle__preview-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-top: 8px;
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+.SaveArticle__warning {
+  padding: 14px;
+  background-color: orange;
+  color: black;
+  border-radius: 4px;
+}
+
+.SaveArticle__error {
+  padding: 14px;
+  background-color: red;
+  color: white;
+  border-radius: 4px;
+}
+
+.SaveArticle__success {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  padding: 18px;
+  text-align: center;
+
+  strong {
+    color: green;
+    font-size: 18px;
+    line-height: 1.5;
+  }
+}

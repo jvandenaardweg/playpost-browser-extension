@@ -1,10 +1,14 @@
 import * as React from 'react';
 import { Button } from '../Button';
-// import './style.scss';
+import './style.scss';
 
 interface AppProps {
-  articleUrl: string;
+  url: string;
+  title: string;
+  description: string;
   documentHtml: string;
+  autoSave: boolean;
+  autoClose: boolean;
   token: string;
 }
 
@@ -32,8 +36,25 @@ export class SaveArticle extends React.PureComponent<AppProps, AppState> {
   }
 
   componentDidMount() {
-    // Save the article on mount
-    this.savePlaylistItem();
+    const { url, autoSave } = this.props;
+
+    // Save the article on mount when the user wants so
+    const hasWarningMessage = !!this.getWarningMessage(url);
+
+    // Only auto-save when there is no warning message
+    if (!hasWarningMessage && autoSave){
+      this.savePlaylistItem();
+    }
+  }
+
+  componentDidUpdate(prevProps: AppProps, nextState: AppState) {
+    const { isSuccess } = this.state;
+    const { autoClose } = this.props;
+
+    // If the saving of the article is a success, close the extension if the user wants it
+    if (isSuccess && autoClose) {
+      setTimeout(() => window.close(), 1000); // Close after 1 seconds, so the user can see the success message
+    }
   }
 
   handleOnClick = async (event: any) => {
@@ -78,10 +99,10 @@ export class SaveArticle extends React.PureComponent<AppProps, AppState> {
   }
 
   savePlaylistItem = () => {
-    const { articleUrl, documentHtml, token } = this.props;
+    const { url, documentHtml, token } = this.props;
 
     return this.setState({ isLoading: true, isSuccess: false, errorMessage: '' }, async () => {
-      const postData = { articleUrl, documentHtml };
+      const postData = { articleUrl: url, documentHtml };
 
       try {
         const response = await fetch('https://api.playpost.app/v1/playlist/articles', {
@@ -110,14 +131,45 @@ export class SaveArticle extends React.PureComponent<AppProps, AppState> {
     })
   }
 
+  getWarningMessage(url: string): string {
+    if (!url) {
+      return 'We could not get the URL from this page.'
+    }
+
+    const isHomepage = url.split('/').filter((part: string) => part).length < 3
+
+    if (isHomepage) {
+      return 'This page seems to be the homepage of a website. Playpost works the best if you save a specific article page. If you are sure this is an article page, you can safely ignore this message.'
+    }
+  }
+
   render() {
     const { isLoading, errorMessage, isSuccess } = this.state;
+    const { title, url, description } = this.props;
+
+    const warningMessage = this.getWarningMessage(url);
+    const isDisabled = !!warningMessage;
+    const successClass = (isSuccess) ? 'is-success' : '';
 
     return (
-      <div>
-        {errorMessage && (<p style={{ color: 'red' }}>{errorMessage}</p>)}
-        {isSuccess && (<p style={{ color: 'green' }}>Article saved to your playlist!</p>)}
-        {!isSuccess && <Button title={(isLoading) ? 'Saving...' : 'Retry'} onClick={this.handleOnClick} />}
+      <div className="SaveArticle">
+
+        {isSuccess && (
+          <div className="SaveArticle__success">
+            <strong>Article successfully saved to your playlist!</strong>
+          </div>
+        )}
+
+        <div className={`SaveArticle__preview ${successClass}`}>
+          <h2 className="SaveArticle__preview-title">{title}</h2>
+          {url && <span className="SaveArticle__preview-url">{url}</span>}
+          {description && <p className="SaveArticle__preview-description">{description}</p>}
+          <div className="SaveArticle__preview-footer">
+            {warningMessage && <p className="SaveArticle__warning">{warningMessage}</p>}
+            {errorMessage && <p className="SaveArticle__error">{errorMessage}</p>}
+            <Button title={(isLoading) ? 'Saving...' : 'Save article'} isPrimary isDisabled={isDisabled} onClick={this.handleOnClick} />
+          </div>
+        </div>
       </div>
     )
   }

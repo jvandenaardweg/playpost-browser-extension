@@ -1,22 +1,56 @@
-$primary-color: darkblue;
-$background-color: #bada55;
-
-/* apply a natural box layout model to all elements, but allowing components to change */
-html {
-  box-sizing: border-box;
-}
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
-
-// Chrome applies an 8px margin by default (gross).
-body {
-  margin: 24px;
-  font-size: 14px;
-}
+@import "../../styles/index.scss";
 
 .Popup {
-  width: 260px;
+  width: 380px;
+}
+
+.Popup__footer {
+  margin-top: 24px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.Popup__footer-option {
+  label {
+    font-weight: normal;
+  }
+  input {
+    margin-right: 6px;
+  }
+}
+
+.Popup__footer {
+  .Button {
+    margin-left: 14px;
+  }
+}
+
+.Popup__header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.Popup__header-right,
+.Popup__header-left {
+  display: flex;
+  align-items: center;
+}
+
+.Popup__header-right {
+  .Button {
+    margin-left: 12px;
+  }
+}
+
+.Popup__header-logo {
+  width: 40px;
+  height: auto;
+  margin-right: 12px;
+}
+
+.Popup__header-title {
+  font-size: 24px;
+  margin: 0;
 }

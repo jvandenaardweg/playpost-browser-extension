@@ -74,8 +74,7 @@ export class LoginForm extends React.PureComponent<AppProps, AppState> {
 
     return (
       <form className="LoginForm" onSubmit={this.handleOnSubmit}>
-        <h1>Login to Playpost</h1>
-        <p>Login to your Playpost account to share articles from your browser to your playlist.</p>
+        <p className="LoginForm__description">Login to your Playpost account to share articles from your browser to your playlist.</p>
         <fieldset disabled={isLoading} className="LoginForm-fieldset">
           <label className="LoginForm-label" htmlFor="email">E-mail address</label>
           <input className="LoginForm-input" type="text" id="email" placeholder="Your e-mail address" onChange={event => this.handleOnChange('email', event.target.value)} />
@@ -84,9 +83,12 @@ export class LoginForm extends React.PureComponent<AppProps, AppState> {
           <input className="LoginForm-input" type="password" id="password" placeholder="Your password" onChange={event => this.handleOnChange('password', event.target.value)} />
 
           {errorMessage && (<p style={{ color: 'red' }}>{errorMessage}</p>)}
-          <Button title={(isLoading) ? 'Logging in...' : 'Login'} type="submit" className="LoginForm-button" onClick={this.handleOnSubmit} disabled={isLoading} />
+          <Button isPrimary title={(isLoading) ? 'Logging in...' : 'Login'} type="submit" className="LoginForm-button" onClick={this.handleOnSubmit} isDisabled={isLoading} />
         </fieldset>
-        <p>{token}</p>
+        <div className="LoginForm__footer">
+          <p><strong>No account yet?</strong> Download our app in the <a href="#">iPhone</a> or <a href="#">Android</a> app and setup your account.</p>
+          <p><strong>Forgot password?</strong> Use the iPhone or Android app to reset your password.</p>
+        </div>
       </form>
     )
   }

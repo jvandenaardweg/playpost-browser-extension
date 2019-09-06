@@ -1,0 +1,25 @@
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+// Chrome applies an 8px margin by default (gross).
+body {
+  margin: 24px;
+  font-size: 14px;
+  background-color: #fff;
+}
+
+
+p {
+  line-height: 1.5;
+}
+
+h1, h2, h3, h5 {
+  line-height: 1.2;
+}

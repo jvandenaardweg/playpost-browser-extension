@@ -5,7 +5,8 @@ module.exports = {
   entry: {
     popup: path.join(__dirname, "src/popup.tsx"),
     background: path.join(__dirname, "src/background.ts"),
-    content: path.join(__dirname, "src/content.ts")
+    content: path.join(__dirname, "src/content.ts"),
+    options: path.join(__dirname, "src/options.tsx"),
   },
   output: {
     path: path.join(__dirname, "dist/"),
@@ -39,6 +40,7 @@ module.exports = {
     new CopyPlugin([
       { from: "./src/manifest.json", to: "./manifest.json" },
       { from: "./src/popup.html", to: "./popup.html" },
+      { from: "./src/options.html", to: "./options.html" },
       { from: "./src/images", to: "./images" }
     ])
   ],
