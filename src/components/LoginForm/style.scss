@@ -61,6 +61,12 @@
   }
 }
 
+.LoginForm__footer-description {
+  text-align: center;
+  display: block;
+  margin-bottom: 0;
+}
+
 .LoginForm-errorMessage {
   padding: 12px 14px;
   background-color: $color-red;
