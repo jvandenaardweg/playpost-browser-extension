@@ -43,15 +43,15 @@
   "release-it": {
     "npm": false,
     "hooks": {
-      "before:release": "npx auto-changelog -p",
-      "before:init": ["npm test"],
-      "after:bump": "npm run build",
+      "before:init": ["npm test", "npm run build"],
+      "after:bump": "npx auto-changelog -p",
       "after:git:release": "echo After git push, before github release",
       "after:release": "echo Successfully released ${name} v${version} to ${repo.repository}."
     },
     "git": {
       "requireCleanWorkingDir": false,
-      "addUntrackedFiles": true
+      "addUntrackedFiles": true,
+      "changelog": "npx auto-changelog --stdout --commit-limit false"
     },
     "commit": true,
     "commitMessage": "Release ${version}",
