@@ -88,7 +88,7 @@ export class LoginForm extends React.PureComponent<AppProps, AppState> {
           <label className="LoginForm-label" htmlFor="password">Password</label>
           <input className="LoginForm-input" type="password" id="password" placeholder="Your password" onChange={event => this.handleOnChange('password', event.target.value)} />
 
-          {errorMessage && (<p style={{ color: 'red' }}>{errorMessage}</p>)}
+          {errorMessage && (<p className="LoginForm-errorMessage">{errorMessage}</p>)}
           <Button isPrimary title={(isLoading) ? 'Logging in...' : 'Login'} type="submit" className="LoginForm-button" onClick={this.handleOnSubmit} isDisabled={isLoading} />
         </fieldset>
         <div className="LoginForm__footer">

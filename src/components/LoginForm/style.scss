@@ -61,3 +61,10 @@
   }
 }
 
+.LoginForm-errorMessage {
+  padding: 12px 14px;
+  background-color: $color-red;
+  border-radius: 4px;
+  color: $color-white;
+}
+

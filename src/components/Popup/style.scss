@@ -2,11 +2,11 @@
 @import "../../styles/index.scss";
 
 .Popup {
-  width: 380px;
+  width: 340px;
 }
 
 .Popup__footer {
-  margin-top: 24px;
+  margin-top: 20;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -30,7 +30,7 @@
 .Popup__header {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .Popup__header-right,
