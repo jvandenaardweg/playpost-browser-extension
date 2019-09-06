@@ -41,15 +41,12 @@
   "release-it": {
     "npm": false,
     "git": {
-      "requireCleanWorkingDir": false
+      "requireCleanWorkingDir": false,
+      "changelog": "npx auto-changelog --stdout --commit-limit false -u --template ./changelog.hbs",
+    },
+    "hooks": {
+      "after:bump": "npx auto-changelog -p"
     }
-  },
-  "git": {
-    "changelog": "npx auto-changelog --stdout --commit-limit false -u --template ./changelog.hbs",
-    "requireCleanWorkingDir": false
-  },
-  "hooks": {
-    "after:bump": "npx auto-changelog -p"
   },
   "auto-changelog": {
     "output": "CHANGELOG.md",
