@@ -14,7 +14,6 @@
       "background.js"
     ]
   },
-  "options_page": "options.html",
   "options_ui": {
     "chrome_style": true,
     "page": "options.html"
