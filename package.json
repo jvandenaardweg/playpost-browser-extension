@@ -31,6 +31,7 @@
     "webpack-merge": "^4.1.4"
   },
   "dependencies": {
+    "auto-changelog": "^1.16.1",
     "jwt-decode": "^2.2.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -39,6 +40,21 @@
   },
   "release-it": {
     "npm": false,
+    "git": {
+      "requireCleanWorkingDir": false
+    }
+  },
+  "git": {
+    "changelog": "npx auto-changelog --stdout --commit-limit false -u --template ./changelog.hbs",
     "requireCleanWorkingDir": false
+  },
+  "hooks": {
+    "after:bump": "npx auto-changelog -p"
+  },
+  "auto-changelog": {
+    "output": "CHANGELOG.md",
+    "template": "keepachangelog",
+    "unreleased": true,
+    "commitLimit": false
   }
 }
