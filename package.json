@@ -13,6 +13,7 @@
   "author": "Jordy van den Aardweg",
   "license": "MIT",
   "devDependencies": {
+    "@release-it/bumper": "^1.0.3",
     "@types/chrome": "0.0.60",
     "@types/react": "^16.8.23",
     "@types/react-dom": "^16.8.4",
@@ -57,7 +58,9 @@
     "commitMessage": "Release ${version}",
     "plugins": {
       "@release-it/bumper": {
-        "out": ["manifest.json"]
+        "out": [
+          "manifest.json"
+        ]
       }
     }
   },
