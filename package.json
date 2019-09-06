@@ -51,7 +51,7 @@
     "git": {
       "requireCleanWorkingDir": false,
       "addUntrackedFiles": true,
-      "changelog": "npx auto-changelog --stdout --commit-limit false"
+      "changelog": "npx auto-changelog --stdout --commit-limit false -u"
     },
     "commit": true,
     "commitMessage": "Release ${version}",
