@@ -43,8 +43,9 @@
   "release-it": {
     "npm": false,
     "hooks": {
+      "before:release": "npx auto-changelog -p",
       "before:init": ["npm test"],
-      "after:bump": "npm run build && npx auto-changelog -p",
+      "after:bump": "npm run build",
       "after:git:release": "echo After git push, before github release",
       "after:release": "echo Successfully released ${name} v${version} to ${repo.repository}."
     },
