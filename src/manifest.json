@@ -36,13 +36,6 @@
   },
   "permissions": [
     "storage",
-    "activeTab",
-    "tabs",
-    "cookies",
-    "notifications",
-    "contextMenus",
-    "http://*/*",
-    "https://*/*",
-    "<all_urls>"
+    "activeTab"
   ]
 }
