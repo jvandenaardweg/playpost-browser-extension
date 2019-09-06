@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Button } from '../Button';
 import './style.scss';
+import { API_BASE_URL } from '../../constants/urls';
 
 interface AppProps {
   url: string;
@@ -73,7 +74,7 @@ export class SaveArticle extends React.PureComponent<AppProps, AppState> {
 
     return this.setState({ isLoadingRemovePlaylistItem: true, isSuccessRemovePlaylistItem: false, errorMessage: '' }, async () => {
       try {
-        const response = await fetch(`https://api.playpost.app/v1/playlist/articles/${playlistItem.article.id}`, {
+        const response = await fetch(API_BASE_URL + `/v1/playlist/articles/${playlistItem.article.id}`, {
           method: 'delete',
           headers: {
             'Content-Type': 'application/json',
@@ -105,7 +106,7 @@ export class SaveArticle extends React.PureComponent<AppProps, AppState> {
       const postData = { articleUrl: url, documentHtml };
 
       try {
-        const response = await fetch('https://api.playpost.app/v1/playlist/articles', {
+        const response = await fetch(API_BASE_URL + '/v1/playlist/articles', {
           method: 'post',
           headers: {
             'Content-Type': 'application/json',
