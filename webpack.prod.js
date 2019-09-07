@@ -8,7 +8,7 @@ module.exports = merge(common, {
   plugins: [
     new WebpackShellPlugin({
       onBuildExit: [
-        'find ./extensions -name "*.zip" -delete',
+        'find ./extension -name "*.zip" -delete',
         'cd ./dist && npx web-ext build -a "../extension"',
       ],
       safe: true
