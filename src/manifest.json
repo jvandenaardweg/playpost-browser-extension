@@ -1,7 +1,9 @@
 {
   "manifest_version": 2,
   "name": "Save to Playpost",
-  "description": "Easily save articles to your Playpost playlist.",
+  "author": "Playpost",
+  "description": "With Playpost you can listen to articles, instead of reading them. This browser extension makes it super easy to save articles from your laptop or computer to your Playpost playlist in the iOS and Android app.",
+  "homepage_url": "https://playpost.app",
   "version": "1.0.36",
   "browser_action": {
     "default_title": "Save to Playpost",
