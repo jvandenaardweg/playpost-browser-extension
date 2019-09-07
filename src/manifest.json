@@ -5,7 +5,7 @@
   "author": "Playpost",
   "description": "With Playpost you can listen to articles, instead of reading them. This extension makes it super easy to save articles to your Playpost playlist.",
   "homepage_url": "https://playpost.app",
-  "version": "1.0.36",
+  "version": "1.0.37",
   "browser_action": {
     "default_title": "Save to Playpost",
     "default_icon": "images/icon-16@2x.png",
