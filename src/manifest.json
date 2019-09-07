@@ -4,7 +4,7 @@
   "short_name": "Playpost",
   "author": "Playpost",
   "homepage_url": "https://playpost.app",
-  "version": "1.0.37",
+  "version": "1.0.38",
   "browser_action": {
     "default_title": "Save to Playpost",
     "default_icon": "images/icon-16@2x.png",
