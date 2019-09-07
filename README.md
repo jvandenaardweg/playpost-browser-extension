@@ -3,6 +3,8 @@ Desktop browser extension for Chrome and Firefox to save articles to your Playpo
 
 ![Playpost Extension Preview](https://github.com/jvandenaardweg/playpost-browser-extension/blob/master/screenshots/store/1-save.png?raw=true)
 
+![Playpost Extension Preview App](https://github.com/jvandenaardweg/playpost-browser-extension/blob/master/screenshots/store/2-play.png?raw=true)
+
 ## Installation
 Install the browser extension with the [Google Chrome Store](https://chrome.google.com/webstore/save-to-playpost/ifnpinjadbboilclldkikcggajgpcdgm) or the [Firefox Add-ons Store](https://addons.mozilla.org/en-US/firefox/addon/playpost/).
 
