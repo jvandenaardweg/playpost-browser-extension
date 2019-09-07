@@ -3,8 +3,9 @@
   "name": "Save to Playpost",
   "short_name": "Playpost",
   "author": "Playpost",
+  "description": "Listen to articles. Easily save articles from your browser to your Playpost playlist.",
   "homepage_url": "https://playpost.app",
-  "version": "1.0.38",
+  "version": "1.0.37",
   "browser_action": {
     "default_title": "Save to Playpost",
     "default_icon": "images/icon-16@2x.png",
