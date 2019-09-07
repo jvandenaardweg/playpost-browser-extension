@@ -15,8 +15,6 @@ interface AppProps {
 
 interface AppState {
   isLoading: boolean;
-  isLoadingRemovePlaylistItem: boolean;
-  isSuccessRemovePlaylistItem: boolean;
   isSuccess: boolean;
   errorMessage: string;
   playlistItem: Api.PlaylistItem | null;
@@ -28,8 +26,6 @@ export class SaveArticle extends React.PureComponent<AppProps, AppState> {
 
     this.state = {
       isLoading: false,
-      isLoadingRemovePlaylistItem: false,
-      isSuccessRemovePlaylistItem: false,
       isSuccess: false,
       errorMessage: '',
       playlistItem: null as Api.PlaylistItem
@@ -61,42 +57,6 @@ export class SaveArticle extends React.PureComponent<AppProps, AppState> {
   handleOnClick = async (event: any) => {
     event.preventDefault();
     this.savePlaylistItem();
-  }
-
-  handleOnClickRemove = (event: any) => {
-    event.preventDefault();
-    this.removePlaylistItem();
-  }
-
-  removePlaylistItem = () => {
-    const { token } = this.props;
-    const { playlistItem } = this.state;
-
-    return this.setState({ isLoadingRemovePlaylistItem: true, isSuccessRemovePlaylistItem: false, errorMessage: '' }, async () => {
-      try {
-        const response = await fetch(API_BASE_URL + `/v1/playlist/articles/${playlistItem.article.id}`, {
-          method: 'delete',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-          }
-        })
-
-        const json = await response.json();
-
-        if (!response.ok) {
-          throw json;
-        }
-
-        return this.setState({ isSuccessRemovePlaylistItem: true })
-
-      } catch (err) {
-        const errorMessage = (err && err.message) ? err.message : 'Unknown error.';
-        this.setState({ errorMessage });
-      } finally {
-        this.setState({ isLoadingRemovePlaylistItem: false });
-      }
-    })
   }
 
   savePlaylistItem = () => {
