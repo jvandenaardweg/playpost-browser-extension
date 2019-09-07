@@ -21,7 +21,7 @@
   "content_scripts": [
     {
       "matches": [
-        "*://*/*"
+        "https://api.playpost.app/*"
       ],
       "js": [
         "content.js"
