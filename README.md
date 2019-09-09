@@ -1,5 +1,5 @@
 # Playpost Browser Extension
-Desktop browser extension for Chrome and Firefox to save articles to your Playpost playlist.
+Desktop browser extension for Chrome, Firefox and Opera to save articles to your Playpost playlist.
 
 ![Playpost Extension Preview](https://github.com/jvandenaardweg/playpost-browser-extension/blob/master/screenshots/store/1-save.png?raw=true)
 
