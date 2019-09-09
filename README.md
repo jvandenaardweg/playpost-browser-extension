@@ -6,7 +6,7 @@ Desktop browser extension for Chrome and Firefox to save articles to your Playpo
 ![Playpost Extension Preview App](https://github.com/jvandenaardweg/playpost-browser-extension/blob/master/screenshots/store/2-play.png?raw=true)
 
 ## Installation
-Install the browser extension with the [Google Chrome Store](https://chrome.google.com/webstore/save-to-playpost/ifnpinjadbboilclldkikcggajgpcdgm) or the [Firefox Add-ons Store](https://addons.mozilla.org/en-US/firefox/addon/playpost/).
+Install the browser extension with the [Google Chrome Store](https://chrome.google.com/webstore/save-to-playpost/ifnpinjadbboilclldkikcggajgpcdgm), the [Firefox Add-ons Store](https://addons.mozilla.org/en-US/firefox/addon/playpost/) or the [Opera Addons Store](https://addons.opera.com/nl/extensions/details/save-to-playpost/)
 
 ## Installation without stores (for developers)
 1. Download the latest version from: https://github.com/jvandenaardweg/playpost-browser-extension/tree/master/extension
@@ -25,6 +25,14 @@ Install the browser extension with the [Google Chrome Store](https://chrome.goog
 3. Click `Load temporary add-on` (or some text similar in your own language).
 4. Browse to the location of the .zip file you downloaded earlier and select that zip file (so not the unzipped files)
 5. Done!
+
+### For Opera:
+1. Open your Opera browser.
+2. Select the 3 horizontal dots on the bottom-left and make sure `Extensions` is enabled.
+3. Select the package icon in the left sidebar, which says `Extensions`
+4. Enable `Developer mode` on the top-right.
+5. Select `Load unpacked` and use the `./dist` file location.
+6. Done!
 
 ## For developers
 1. Clone repo
