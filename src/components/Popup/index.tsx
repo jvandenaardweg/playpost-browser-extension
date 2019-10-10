@@ -50,7 +50,7 @@ export class Popup extends React.Component<AppProps, AppState> {
 
     const canonicalUrlElement = document.querySelector('link[rel="canonical"]');
     const canonicalUrlElementHref = (canonicalUrlElement) ? canonicalUrlElement.getAttribute('href') : ''
-    const canonicalUrl = (canonicalUrlElementHref && canonicalUrlElementHref !== '/') ? canonicalUrlElementHref : '';
+    const canonicalUrl = (canonicalUrlElementHref && canonicalUrlElementHref !== '/' && canonicalUrlElementHref.startsWith('https://')) ? canonicalUrlElementHref : '';
     const windowLocationUrl = window.location.href;
     const url = canonicalUrl || windowLocationUrl || '';
 
